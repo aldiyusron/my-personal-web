@@ -2,33 +2,19 @@
 import { defineAsyncComponent } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 
+const Navbar = defineAsyncComponent(() => import('./layouts/Navbar.vue'))
 const HelloWorld = defineAsyncComponent(
   () => import('./components/HelloWorld.vue'),
 )
 </script>
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-      loading="lazy"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <Navbar />
+  <main>
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 mt-16">
+      <RouterView />
     </div>
-  </header>
-
-  <RouterView />
+  </main>
 </template>
 
 <style scoped>
